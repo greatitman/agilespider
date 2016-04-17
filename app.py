@@ -1,15 +1,12 @@
 import os
 import re
 #coding : utf-8
+from agilespider import *
 
-
-class AgileSpider(object):
-    def __init__(self):
-        print "init the spider "
-
-    @classmethod
-    def testStub(cls):
-        print "hello aigle spider "
+def getTitle(html):
+    title = re.search('<title>(.*?)</title>',html, re.S).group(1)
+    return title
 
 if __name__=='__main__':
-    AgileSpider.testStub()
+    html = AgileSpider.getWebPage("http://www.baidu.com")
+    print getTitle(html)
